@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Kaloni - Digital Marketing Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #242424;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 96;
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+        <header class="text-center py-12">
+            <h1 class="text-5xl md:text-7xl font-black text-[#004AAD] tracking-tight">AKASH KALONI</h1>
+            <p class="mt-4 text-xl md:text-2xl font-semibold text-[#009FFD]">Certified Digital Marketing Professional</p>
+        </header>
+
+        <main>
+            <section id="summary" class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
+                <h2 class="text-3xl font-bold text-[#004AAD] text-center mb-4">Professional Summary</h2>
+                <p class="text-center max-w-3xl mx-auto text-lg leading-relaxed">
+                    A highly motivated and certified digital marketing professional with extensive expertise in Google Ads campaign management and optimization. Proven ability to drive results by implementing data-driven strategies, conducting in-depth performance analysis, and providing expert, customer-focused solutions. Passionate about applying a strategic, results-driven approach to enhance ad performance and deliver successful outcomes for businesses.
+                </p>
+            </section>
+            
+            <section id="skills" class="mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#004AAD]">Core Competencies</h2>
+                    <p class="mt-2 text-lg">A visual breakdown of key digital marketing skills and expertise.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="chart-container h-[40vh] md:h-96 max-h-[500px]">
+                        <canvas id="skillsRadarChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="mb-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-[#004AAD]">Professional Journey</h2>
+                    <p class="mt-2 text-lg">A timeline of practical experience and career progression.</p>
+                </div>
+                <div class="relative max-w-3xl mx-auto">
+                    <div class="absolute left-1/2 w-1 bg-[#009FFD] h-full transform -translate-x-1/2"></div>
+                    <div class="mb-12">
+                        <div class="flex items-center w-full">
+                            <div class="w-1/2 flex justify-end">
+                                <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm mr-4 text-right">
+                                    <p class="text-lg font-bold text-[#004AAD]">Process Executive</p>
+                                    <p class="text-md font-semibold">Cognizant, Gurgaon</p>
+                                    <p class="text-sm text-gray-600 italic">March 2024 - July 2025</p>
+                                    <p class="mt-2 text-sm">Managed and optimized Google Ads campaigns, providing expert guidance and data-driven insights to maximize client ROI and satisfaction.</p>
+                                </div>
+                            </div>
+                            <div class="w-12 h-12 bg-[#004AAD] rounded-full absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center text-white text-xl font-bold z-10">1</div>
+                            <div class="w-1/2"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center w-full">
+                            <div class="w-1/2"></div>
+                            <div class="w-12 h-12 bg-[#004AAD] rounded-full absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center text-white text-xl font-bold z-10">2</div>
+                            <div class="w-1/2 flex justify-start">
+                                <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm ml-4 text-left">
+                                     <p class="text-lg font-bold text-[#004AAD]">Digital Marketing Assistant</p>
+                                    <p class="text-md font-semibold">Graphic Era Hill University</p>
+                                    <p class="text-sm text-gray-600 italic">June 2022 - August 2022</p>
+                                    <p class="mt-2 text-sm">Supported the implementation of multi-channel digital marketing strategies and generated weekly progress reports.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certifications" class="mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#004AAD]">Industry Certifications</h2>
+                    <p class="mt-2 text-lg">A showcase of specialized knowledge and certified expertise.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-center">
+                        <span class="text-3xl mr-4 text-[#009FFD]">🏆</span>
+                        <div>
+                            <h3 class="font-bold text-md">Google Ads Search</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-center">
+                        <span class="text-3xl mr-4 text-[#009FFD]">🖥️</span>
+                        <div>
+                            <h3 class="font-bold text-md">Google Ads Display</h3>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg p-6 flex items-center">
+                        <span class="text-3xl mr-4 text-[#009FFD]">▶️</span>
+                        <div>
+                            <h3 class="font-bold text-md">Google Ads Video</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-center">
+                        <span class="text-3xl mr-4 text-[#009FFD]">📱</span>
+                        <div>
+                            <h3 class="font-bold text-md">Google Ads Apps</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-center">
+                        <span class="text-3xl mr-4 text-[#009FFD]">🛒</span>
+                        <div>
+                            <h3 class="font-bold text-md">AI-Powered Shopping Ads</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-center">
+                        <span class="text-3xl mr-4 text-[#009FFD]">📊</span>
+                        <div>
+                            <h3 class="font-bold text-md">Google Ads - Measurement</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex items-center md:col-span-2 lg:col-span-3">
+                         <span class="text-3xl mr-4 text-[#009FFD]">🎓</span>
+                        <div>
+                            <h3 class="font-bold text-md">The Complete Digital Marketing Course - 12 Courses in 1</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="education" class="mb-12">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#004AAD]">Educational Foundation</h2>
+                    <p class="mt-2 text-lg">Academic background in business and marketing.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <p class="text-xl font-bold text-[#004AAD]">Master of Business Administration</p>
+                        <p class="font-semibold">Marketing Management</p>
+                        <p class="text-gray-600 mt-1">Graphic Era Hill University, Dehradun | 2021-2023</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <p class="text-xl font-bold text-[#004AAD]">Bachelor of Commerce</p>
+                        <p class="font-semibold">Accounting And Finance</p>
+                        <p class="text-gray-600 mt-1">Kumaun University, Tanakpur | 2017-2020</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center py-8 border-t-2 border-[#009FFD] mt-8">
+            <h3 class="text-2xl font-bold text-[#004AAD]">Contact Information</h3>
+            <div class="flex justify-center items-center space-x-6 mt-4 text-md">
+                <a href="mailto:akashkaloni2000@gmail.com" class="hover:text-[#009FFD]">akashkaloni2000@gmail.com</a>
+                <span>&bull;</span>
+                <p>9368820602</p>
+                <span>&bull;</span>
+                 <a href="http://www.linkedin.com/in/akash-kaloni-9bb3a1135" target="_blank" class="hover:text-[#009FFD]">LinkedIn Profile</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxLength) => {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+        
+        const skillsRadarCtx = document.getElementById('skillsRadarChart').getContext('2d');
+        const skillsData = {
+            labels: [
+                'Google Ads Campaign Mngmt', 
+                'Performance Analysis', 
+                'Keyword Research', 
+                'Data-Driven Decision Making', 
+                'Ad Copy Optimization',
+                'ROI-Driven Approach'
+            ].map(label => wrapLabel(label, 16)),
+            datasets: [{
+                label: 'Proficiency Level',
+                data: [9, 8, 8, 9, 7, 9],
+                backgroundColor: 'rgba(0, 159, 253, 0.2)',
+                borderColor: '#009FFD',
+                borderWidth: 2,
+                pointBackgroundColor: '#004AAD',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#004AAD'
+            }]
+        };
+
+        new Chart(skillsRadarCtx, {
+            type: 'radar',
+            data: skillsData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: '#e2e8f0'
+                        },
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            color: '#242424'
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            stepSize: 2,
+                            font: {
+                                size: 10
+                            }
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
