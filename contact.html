@@ -7,7 +7,23 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #F5F5F5; color: #242424; scroll-behavior: smooth; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background-color: #F5F5F5; 
+      color: #242424; 
+      scroll-behavior: smooth; 
+    }
+    /* Toast Animations */
+    .toast-show { animation: fadeInUp 0.6s ease forwards; }
+    .toast-hide { animation: fadeOutDown 0.6s ease forwards; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeOutDown {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(30px); }
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -22,11 +38,12 @@
       <h2 class="text-3xl font-bold text-[#004AAD] mb-4">📬 Connect with Me</h2>
       <p class="text-lg text-gray-700 mb-6">
         Drop your message below or reach out directly on
-        <a href="tel:+919756203039" class="text-[#009FFD] hover:underline font-semibold">+91 9756203039</a>.
+        <a href="https://wa.me/919756203039" target="_blank" class="text-[#009FFD] hover:underline font-semibold">WhatsApp</a>.
         I’ll review it and get back to you <strong>ASAP!</strong>
       </p>
 
-      <https://formspree.io/f/xyzblobw="contactForm" class="max-w-md mx-auto">
+      <!-- ✅ Correct Form Setup -->
+      <form id="contactForm" action="https://formspree.io/f/xyzblobw" method="POST" class="max-w-md mx-auto">
         <input type="text" name="name" id="name" placeholder="Your Name" required
           class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:ring-2 focus:ring-[#009FFD] focus:outline-none" />
         <input type="email" name="_replyto" id="email" placeholder="Your Email" required
@@ -46,20 +63,19 @@
           </a>
         </div>
 
-        <!-- This hidden field is used by Formspree as a honeypot in some setups (optional) -->
         <input type="text" name="_gotcha" style="display:none" />
       </form>
     </section>
 
-    <!-- Success / Error Toast -->
+    <!-- ✅ Success / Error Toast -->
     <div id="toast" class="fixed right-6 bottom-6 hidden max-w-sm w-full z-50">
-      <div id="toastInner" class="bg-white shadow-lg rounded-lg p-4 border flex items-start gap-3">
+      <div id="toastInner" class="bg-green-500 text-white shadow-lg rounded-lg p-4 flex items-start gap-3">
         <div id="toastIcon" class="text-2xl">✅</div>
         <div>
-          <p id="toastTitle" class="font-semibold text-gray-900">Message sent!</p>
-          <p id="toastMsg" class="text-sm text-gray-600">Thanks — I’ll review and get back to you soon.</p>
+          <p id="toastTitle" class="font-semibold">Thanks for submitting your response!</p>
+          <p id="toastMsg" class="text-sm">I’ll review your message and get back to you shortly.</p>
         </div>
-        <button id="toastClose" class="ml-auto text-gray-500 hover:text-gray-700">✕</button>
+        <button id="toastClose" class="ml-auto text-white hover:text-gray-200 font-bold">✕</button>
       </div>
     </div>
 
@@ -77,78 +93,62 @@
 
   <script>
     (function () {
-      // Replace this with your Formspree endpoint: https://formspree.io/f/<YOUR_FORM_ID>
-      const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-
       const form = document.getElementById('contactForm');
       const submitBtn = document.getElementById('submitBtn');
       const toast = document.getElementById('toast');
-      const toastTitle = document.getElementById('toastTitle');
-      const toastMsg = document.getElementById('toastMsg');
-      const toastIcon = document.getElementById('toastIcon');
       const toastClose = document.getElementById('toastClose');
 
-      // show toast helper
-      function showToast({ success = true, title, message }) {
-        toastTitle.textContent = title || (success ? 'Message sent!' : 'Submission failed');
-        toastMsg.textContent = message || (success ? 'Thanks — I’ll review and get back to you soon.' : 'Something went wrong. Please try again later.');
-        toastIcon.textContent = success ? '✅' : '⚠️';
-        toast.classList.remove('hidden');
-        // auto-hide after 5s
-        setTimeout(() => { toast.classList.add('hidden'); }, 5000);
+      function showToast(success = true) {
+        toast.classList.remove('hidden', 'toast-hide');
+        toast.classList.add('toast-show');
+        setTimeout(() => {
+          toast.classList.add('toast-hide');
+          toast.classList.remove('toast-show');
+          setTimeout(() => toast.classList.add('hidden'), 600);
+        }, 4000);
       }
 
-      toastClose.addEventListener('click', () => toast.classList.add('hidden'));
+      toastClose.addEventListener('click', () => {
+        toast.classList.add('toast-hide');
+        setTimeout(() => toast.classList.add('hidden'), 600);
+      });
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // simple validation
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message').value.trim();
 
         if (!name || !email || !message) {
-          showToast({ success: false, title: 'Incomplete', message: 'Please fill all required fields.' });
+          alert("Please fill all fields before submitting.");
           return;
         }
 
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
 
-        // post using FormData
-        const data = new FormData();
-        data.append('name', name);
-        data.append('_replyto', email);
-        data.append('message', message);
+        const data = new FormData(form);
 
-        fetch(FORMSPREE_ENDPOINT, {
+        fetch(form.action, {
           method: 'POST',
           body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         })
         .then(resp => {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
           if (resp.ok) {
             form.reset();
-            showToast({ success: true });
+            showToast(true);
           } else {
-            return resp.json().then(err => {
-              // Formspree sometimes returns JSON with errors
-              const errMsg = (err && err.error) ? err.error : 'Submission failed.';
-              showToast({ success: false, message: errMsg });
-            }).catch(() => {
-              showToast({ success: false });
-            });
+            alert("There was an issue submitting your message. Please try again later.");
           }
         })
         .catch(() => {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
-          showToast({ success: false });
+          alert("Network error. Please try again.");
         });
       });
     })();
