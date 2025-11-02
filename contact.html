@@ -7,15 +7,18 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background-color: #F5F5F5; 
-      color: #242424; 
-      scroll-behavior: smooth; 
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F5F5F5;
+      color: #242424;
+      scroll-behavior: smooth;
     }
-    /* Toast Animations */
-    .toast-show { animation: fadeInUp 0.6s ease forwards; }
-    .toast-hide { animation: fadeOutDown 0.6s ease forwards; }
+    .toast-show {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .toast-hide {
+      animation: fadeOutDown 0.6s ease forwards;
+    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -33,7 +36,7 @@
       <p class="mt-4 text-lg text-[#009FFD]">I'd love to hear from you! Drop a message below or connect directly.</p>
     </header>
 
-    <!-- Contact Form Section -->
+    <!-- ✅ CONTACT FORM SECTION -->
     <section id="connect" class="bg-white rounded-xl shadow-lg p-8 text-center">
       <h2 class="text-3xl font-bold text-[#004AAD] mb-4">📬 Connect with Me</h2>
       <p class="text-lg text-gray-700 mb-6">
@@ -42,7 +45,7 @@
         I’ll review it and get back to you <strong>ASAP!</strong>
       </p>
 
-      <!-- ✅ Correct Form Setup -->
+      <!-- ✅ Correct Form Element -->
       <form id="contactForm" action="https://formspree.io/f/xyzblobw" method="POST" class="max-w-md mx-auto">
         <input type="text" name="name" id="name" placeholder="Your Name" required
           class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:ring-2 focus:ring-[#009FFD] focus:outline-none" />
@@ -67,13 +70,13 @@
       </form>
     </section>
 
-    <!-- ✅ Success / Error Toast -->
+    <!-- ✅ Toast Message -->
     <div id="toast" class="fixed right-6 bottom-6 hidden max-w-sm w-full z-50">
       <div id="toastInner" class="bg-green-500 text-white shadow-lg rounded-lg p-4 flex items-start gap-3">
         <div id="toastIcon" class="text-2xl">✅</div>
         <div>
           <p id="toastTitle" class="font-semibold">Thanks for submitting your response!</p>
-          <p id="toastMsg" class="text-sm">I’ll review your message and get back to you shortly.</p>
+          <p id="toastMsg" class="text-sm">I’ll review your message and get back to you soon.</p>
         </div>
         <button id="toastClose" class="ml-auto text-white hover:text-gray-200 font-bold">✕</button>
       </div>
@@ -98,7 +101,7 @@
       const toast = document.getElementById('toast');
       const toastClose = document.getElementById('toastClose');
 
-      function showToast(success = true) {
+      function showToast() {
         toast.classList.remove('hidden', 'toast-hide');
         toast.classList.add('toast-show');
         setTimeout(() => {
@@ -116,39 +119,29 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if (!name || !email || !message) {
-          alert("Please fill all fields before submitting.");
-          return;
-        }
-
+        const data = new FormData(form);
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
-
-        const data = new FormData(form);
 
         fetch(form.action, {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }
         })
-        .then(resp => {
+        .then(response => {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
-          if (resp.ok) {
+          if (response.ok) {
             form.reset();
-            showToast(true);
+            showToast();
           } else {
-            alert("There was an issue submitting your message. Please try again later.");
+            alert('There was an issue submitting your message. Please try again later.');
           }
         })
         .catch(() => {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Message';
-          alert("Network error. Please try again.");
+          alert('Network error. Please try again.');
         });
       });
     })();
